@@ -4,7 +4,7 @@ Website profil dan ruang informasi HIMATIF Samanvaya.
 
 ## Struktur
 
-- `index.html` - halaman beranda
+- `pages/beranda.html` - halaman beranda
 - `pages/` - halaman anggota, divisi, berita, kegiatan, dan tentang
 - `assets/images/` - aset foto dan ilustrasi
 - `assets/icons/` - ikon tambahan
@@ -16,7 +16,7 @@ Website profil dan ruang informasi HIMATIF Samanvaya.
 
 ## Menjalankan
 
-Website ini tidak membutuhkan proses build. Buka `index.html` langsung di browser atau gunakan ekstensi Live Server di VS Code.
+Website ini tidak membutuhkan proses build. Buka `pages/beranda.html` langsung di browser atau gunakan ekstensi Live Server di VS Code.
 
 ## Catatan
 
