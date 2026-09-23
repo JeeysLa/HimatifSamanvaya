@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Berita | HIMATIF Samanvaya</title>
+    <link rel="icon" type="image/png" href="../assets/logo/logo-samanvaya.webp">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/main.js" defer></script>
+    <script src="../js/berita-detail.js" defer></script>
+</head>
+
+<body>
+    <header class="site-header" data-header>
+        <div class="container nav-wrap"><a class="brand" href="../index.html"><span class="brand-mark"
+                    aria-label="Logo Samanvaya"><img src="../assets/logo/logo-samanvaya.webp"
+                        alt="Samanvaya"></span><span class="brand-copy"><strong>HIMATIF</strong><small>Samanvaya</small></span></a><button
+                class="menu-toggle" type="button" aria-label="Buka menu" aria-expanded="false"
+                data-menu-toggle><span></span><span></span></button>
+            <nav class="main-nav" data-menu><a href="../index.html">Beranda</a><a href="kabinet.html">Kabinet</a><a
+                    href="divisi.html">Divisi</a><a class="active" href="berita.html">Berita</a><a
+                    href="kegiatan.html">Kegiatan</a></nav>
+        </div>
+    </header>
+    <main>
+        <section class="inner-hero inner-hero-news section-dark">
+            <div class="container">
+                <p class="eyebrow reveal"><span class="eyebrow-dot"></span><span data-detail-category>Berita Himatif</span></p>
+                <h1 class="reveal reveal-delay" data-detail-title>Detail berita.</h1>
+                <p class="inner-lead reveal reveal-delay-2" data-detail-date></p>
+            </div>
+        </section>
+        <section class="section-light section-space">
+            <div class="container news-detail-layout">
+                <article class="news-detail-content">
+                    <div class="news-detail-head">
+                        <p class="section-label" data-detail-label></p>
+                        <h2 data-detail-heading></h2>
+                        <p class="news-detail-summary" data-detail-summary></p>
+                        <div class="news-detail-facts">
+                            <span><b>Waktu</b><em data-detail-date-inline></em></span>
+                            <span><b>Status</b><em data-detail-status>Terbuka untuk mahasiswa HIMATIF</em></span>
+                        </div>
+                    </div>
+                    <div class="news-detail-body" data-detail-body></div>
+                    <aside class="news-detail-note">
+                        <span data-detail-note-label>Catatan berita</span>
+                        <p data-detail-note></p>
+                    </aside>
+                    <div class="news-detail-actions">
+                        <a class="button button-dark" href="berita.html"><span>←</span> Kembali ke berita</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container footer-top"><a class="brand footer-brand"
+                href="../index.html"><span><strong>HIMATIF</strong><small>Samanvaya</small></span></a>
+            <div class="footer-links">
+                <div>
+                    <p>Jelajah</p><a href="kabinet.html">Kabinet</a><a href="divisi.html">Divisi</a><a
+                        href="berita.html">Berita</a>
+                </div>
+                <div>
+                    <p>Temukan kami</p><a href="https://instagram.com/himatif_ubp" target="_blank"
+                        rel="noreferrer">Instagram ↗</a><a href="mailto:halo@himatifsamanvaya.id">Email ↗</a><a
+                        href="https://www.tiktok.com/@himatif_ubp" target="_blank" rel="noreferrer">TikTok ↗</a>
+                </div>
+            </div>
+        </div>
+        <div class="container footer-bottom"><span>© 2026 HIMATIF Samanvaya</span><span>Made with intention.</span>
+        </div>
+    </footer>
+</body>
+
+</html>
