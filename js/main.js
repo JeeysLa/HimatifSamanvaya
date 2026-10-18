@@ -33,3 +33,32 @@ const revealObserver = new IntersectionObserver((entries, observer) => {
 }, { threshold: 0.12 });
 
 revealItems.forEach((item) => revealObserver.observe(item));
+
+const photoViewer = document.querySelector('[data-photo-viewer]');
+const photoViewerImage = photoViewer?.querySelector('[data-photo-viewer-image]');
+
+document.querySelectorAll('[data-photo-open]').forEach((trigger) => {
+  trigger.addEventListener('click', () => {
+    const image = trigger.querySelector('img');
+    if (!photoViewer || !photoViewerImage || !image) return;
+
+    photoViewerImage.src = image.currentSrc || image.src;
+    photoViewerImage.alt = trigger.getAttribute('aria-label') || '';
+    photoViewer.showModal();
+  });
+});
+
+photoViewer?.querySelector('[data-photo-close]')?.addEventListener('click', () => {
+  photoViewer.close();
+});
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && photoViewer?.open) {
+    event.preventDefault();
+    photoViewer.close();
+  }
+});
+
+photoViewer?.addEventListener('click', (event) => {
+  if (event.target === photoViewer) photoViewer.close();
+});

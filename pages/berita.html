@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Sora:wght@500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
     <script src="../js/main.js" defer></script>
@@ -41,31 +41,27 @@
             <div class="container">
                 <div class="directory-toolbar">
                     <div>
-                        <p class="section-label">Berita Himatif</p>
-                        <h2>Yang sedang terjadi</h2>
+                        <p class="section-label reveal">Pengumuman HIMATIF</p>
+                        <h2 class="reveal reveal-delay">Segera hadir</h2>
                     </div>
-                    <div class="filter-group" data-news-filter><button class="filter active"
-                            data-filter="all">Semua</button><button class="filter"
-                            data-filter="pengumuman">Pengumuman</button><button class="filter"
-                            data-filter="kegiatan">Kegiatan</button></div>
                 </div>
                 <div class="article-list">
-                    <article class="article-row" data-category="kegiatan">
-                        <div class="article-date">10<br><small>OKT</small></div>
-                        <div class="image-placeholder article article-image-makrab"><span>MAKRAB<br>HIMATIF</span></div>
+                    <article class="article-row reveal reveal-delay" data-category="pengumuman">
+                        <div class="image-placeholder article article-image-rekrutmen"><span>OPEN<br>RECRUITMENT</span></div>
                         <div>
-                            <p class="article-category">Kegiatan</p>
-                            <h2>Makrab HIMATIF</h2><a
-                                class="button button-dark article-read" href="berita-detail.html?berita=makrab">Baca cerita <span>→</span></a>
+                            <p class="article-category">Pengumuman <span class="article-status">Soon</span></p>
+                            <h2>Open Recruitment & Minat Bakat HIMATIF Muda 2027</h2>
+                            <p class="article-summary">Kesempatan untuk bergabung di Next Generation HIMATIF direncanakan hadir di akhir Oktober. Informasi pendaftaran menyusul.</p>
+                            <a class="button button-dark article-read" href="berita-detail.html?berita=rekrutmen">Info selengkapnya <span>→</span></a>
                         </div>
                     </article>
-                    <article class="article-row" data-category="pengumuman">
-                        <div class="article-date">23<br><small>SEP</small></div>
-                        <div class="image-placeholder article article-image-rekrutmen"><span>REKRUTMEN<br>ANGGOTA</span></div>
+                    <article class="article-row reveal reveal-delay-2" data-category="pengumuman">
+                        <div class="image-placeholder article article-image-pdh"><span>PDH<br>BATCH 2</span></div>
                         <div>
-                            <p class="article-category">Pengumuman</p>
-                            <h2>Rekrutmen Anggota HIMATIF</h2><a
-                                class="button button-dark article-read" href="berita-detail.html?berita=rekrutmen">Baca cerita <span>→</span></a>
+                            <p class="article-category">Pengumuman <span class="article-status">Soon</span></p>
+                            <h2>PDH Batch 2</h2>
+                            <p class="article-summary">Detail produk dan pemesanan segera diumumkan.</p>
+                            <a class="button button-dark article-read" href="berita-detail.html?berita=pdh-batch-2">Info selengkapnya <span>→</span></a>
                         </div>
                     </article>
                 </div>
@@ -81,9 +77,9 @@
                         href="berita.html">Berita</a>
                 </div>
                 <div>
-                    <p>Temukan kami</p><a href="https://instagram.com/himatif_ubp" target="_blank"
-                        rel="noreferrer">Instagram ↗</a><a href="mailto:halo@himatifsamanvaya.id">Email ↗</a><a
-                        href="https://www.tiktok.com/@himatif_ubp" target="_blank" rel="noreferrer">TikTok ↗</a>
+                    <p>Temukan kami</p>
+                    <a class="footer-social-link" href="https://instagram.com/himatif_ubp" target="_blank" rel="noreferrer"><svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5.2"></rect><circle cx="12" cy="12" r="4"></circle><circle class="social-icon-dot" cx="17.5" cy="6.5" r="1"></circle></svg><span>Instagram</span></a>
+                    <a class="footer-social-link" href="https://www.tiktok.com/@himatif_ubp" target="_blank" rel="noreferrer"><svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M15.4 3h-3.2v12.4a2.4 2.4 0 1 1-2.4-2.4c.45 0 .87.12 1.23.34v-3.4a5.8 5.8 0 1 0 4.37 5.62V9.2a7.5 7.5 0 0 0 4.6 1.48V7.45c-2.55-.16-4.54-2.12-4.6-4.45Z"></path></svg><span>TikTok</span></a>
                 </div>
             </div>
         </div>

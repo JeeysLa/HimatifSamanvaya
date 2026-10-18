@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Sora:wght@500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
     <script src="../js/main.js" defer></script>
@@ -31,49 +31,63 @@
     <main>
         <section class="inner-hero inner-hero-events section-dark">
             <div class="container">
-                <p class="eyebrow reveal"><span class="eyebrow-dot"></span>Agenda & program kerja</p>
-                <h1 class="reveal reveal-delay">Datang,<br><em>ikuti.</em></h1>
-                <p class="inner-lead reveal reveal-delay-2">Temukan ruang untuk belajar, berjejaring, dan membuat sesuatu yang berarti.</p>
+                <p class="eyebrow reveal"><span class="eyebrow-dot"></span>Arsip kegiatan HIMATIF</p>
+                <h1 class="reveal reveal-delay">Jejak<br><em>kebersamaan.</em></h1>
+                <p class="inner-lead reveal reveal-delay-2">Cerita dan momen dari kegiatan yang telah kita lalui bersama.</p>
             </div>
         </section>
-        <section class="section-cream section-space">
+        <section class="section-cream section-space event-recap-section">
             <div class="container">
                 <div class="section-heading">
                     <div>
-                        <p class="section-label">Kalender Samanvaya</p>
-                        <h2>Agenda<br><em>terdekat.</em></h2>
+                        <p class="section-label">Rekap kegiatan</p>
+                        <h2>Momen yang<br><em>terlewati.</em></h2>
                     </div>
-                    <p class="heading-aside">Simpan tanggalnya. Kita bertemu di sana.</p>
                 </div>
-                <div class="event-list">
-                    <article class="event-card">
-                        <div class="event-date"><strong>18</strong><span>SEP<br>2025</span></div>
-                        <div>
-                            <p class="article-category">Workshop</p>
-                            <h3>Designing with purpose</h3>
-                            <p>Belajar menyusun ide digital yang punya arah dan dampak.</p>
-                        </div><a href="#">↗</a>
-                    </article>
-                    <article class="event-card event-highlight">
-                        <div class="event-date"><strong>04</strong><span>OKT<br>2025</span></div>
-                        <div>
-                            <p class="article-category">Forum</p>
-                            <h3>Temu Samanvaya #02</h3>
-                            <p>Obrolan santai tentang kuliah, karier, dan hidup setelah kampus.</p>
-                        </div><a href="#">↗</a>
-                    </article>
-                    <article class="event-card">
-                        <div class="event-date"><strong>19</strong><span>OKT<br>2025</span></div>
-                        <div>
-                            <p class="article-category">Kompetisi</p>
-                            <h3>HIMATIF Hackday</h3>
-                            <p>Satu hari untuk membangun prototipe bersama tim lintas angkatan.</p>
-                        </div><a href="#">↗</a>
-                    </article>
+                <div class="event-recap">
+                    <div class="event-recap-feature">
+                        <img class="event-recap-cover reveal" src="../assets/images/CigolosorUBP.jpg"
+                            alt="Suasana tenda di lokasi Makrab HIMATIF" loading="lazy">
+                        <div class="event-recap-copy reveal reveal-delay">
+                            <p class="article-category">Terlaksana</p>
+                            <h3>Makrab HIMATIF</h3>
+                            <p>Momen untuk saling mengenal lebih dekat, menguatkan kebersamaan, dan membawa pulang cerita baru sebagai keluarga HIMATIF.</p>
+                        </div>
+                    </div>
+                    <p class="section-label event-recap-gallery-label reveal">Moment Malam Keakraban</p>
+                    <div class="event-recap-gallery" aria-label="Dokumentasi Makrab HIMATIF">
+                        <figure class="event-recap-photo reveal reveal-delay">
+                            <button class="event-photo-trigger" type="button" data-photo-open
+                                aria-label="Buka foto peserta Makrab HIMATIF di area perkemahan">
+                                <img src="../assets/images/Foto Pose HIMATIF.jpeg" alt="" loading="lazy">
+                                <span class="event-photo-hint">Lihat foto</span>
+                            </button>
+                        </figure>
+                        <figure class="event-recap-photo reveal reveal-delay-2">
+                            <button class="event-photo-trigger" type="button" data-photo-open
+                                aria-label="Buka foto peserta Makrab HIMATIF berfoto bersama">
+                                <img src="../assets/images/Foto Biasa HIMATIF.jpeg" alt="" loading="lazy">
+                                <span class="event-photo-hint">Lihat foto</span>
+                            </button>
+                        </figure>
+                        <figure class="event-recap-photo reveal reveal-delay">
+                            <button class="event-photo-trigger" type="button" data-photo-open
+                                aria-label="Buka foto peserta Makrab UBP berpose bersama">
+                                <img src="../assets/images/Foto Pose UBP HIMATIF.jpeg" alt="" loading="lazy">
+                                <span class="event-photo-hint">Lihat foto</span>
+                            </button>
+                        </figure>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
+    <dialog class="event-photo-viewer" data-photo-viewer aria-label="Foto dokumentasi Makrab HIMATIF">
+        <button class="event-photo-viewer-close" type="button" data-photo-close aria-label="Tutup foto">×</button>
+        <figure>
+            <img data-photo-viewer-image alt="">
+        </figure>
+    </dialog>
     <footer class="site-footer">
         <div class="container footer-top"><a class="brand footer-brand"
                 href="../index.html"><span><strong>HIMATIF</strong><small>Samanvaya</small></span></a>
@@ -83,9 +97,9 @@
                         href="berita.html">Berita</a>
                 </div>
                 <div>
-                    <p>Temukan kami</p><a href="https://instagram.com/himatif_ubp" target="_blank"
-                        rel="noreferrer">Instagram ↗</a><a href="mailto:halo@himatifsamanvaya.id">Email ↗</a><a
-                        href="https://www.tiktok.com/@himatif_ubp" target="_blank" rel="noreferrer">TikTok ↗</a>
+                    <p>Temukan kami</p>
+                    <a class="footer-social-link" href="https://instagram.com/himatif_ubp" target="_blank" rel="noreferrer"><svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5.2"></rect><circle cx="12" cy="12" r="4"></circle><circle class="social-icon-dot" cx="17.5" cy="6.5" r="1"></circle></svg><span>Instagram</span></a>
+                    <a class="footer-social-link" href="https://www.tiktok.com/@himatif_ubp" target="_blank" rel="noreferrer"><svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M15.4 3h-3.2v12.4a2.4 2.4 0 1 1-2.4-2.4c.45 0 .87.12 1.23.34v-3.4a5.8 5.8 0 1 0 4.37 5.62V9.2a7.5 7.5 0 0 0 4.6 1.48V7.45c-2.55-.16-4.54-2.12-4.6-4.45Z"></path></svg><span>TikTok</span></a>
                 </div>
             </div>
         </div>
