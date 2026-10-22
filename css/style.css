@@ -18,7 +18,6 @@
    
    ========================================================================== */
 
-
 /* ==========================================================================
    SECTION 1: GLOBAL & RESET STYLES (Line 23 - Line 69)
    ========================================================================== */
@@ -85,82 +84,292 @@ button {
   pointer-events: none;
 }
 
+.page-transition[data-pillar="doric"] {
+  --transition-pillar-left: linear-gradient(
+    90deg,
+    transparent 82%,
+    var(--transition-accent) 84% 85%,
+    transparent 86% 88%,
+    var(--transition-accent) 89% 90%,
+    transparent 91% 93%,
+    var(--transition-accent) 94% 95%,
+    transparent 96% 98%,
+    var(--transition-accent) 99% 100%
+  );
+  --transition-pillar-right: linear-gradient(
+    90deg,
+    var(--transition-accent) 0 1%,
+    transparent 2% 4%,
+    var(--transition-accent) 5% 6%,
+    transparent 7% 9%,
+    var(--transition-accent) 10% 11%,
+    transparent 12% 14%,
+    var(--transition-accent) 15% 16%,
+    transparent 17%
+  );
+}
+
+.page-transition[data-pillar="ionic"] {
+  --transition-pillar-left:
+    radial-gradient(ellipse 16px 13px at 85% 10%, transparent 0 48%, var(--transition-accent) 52% 70%, transparent 74%),
+    radial-gradient(ellipse 16px 13px at 97% 10%, transparent 0 48%, var(--transition-accent) 52% 70%, transparent 74%),
+    radial-gradient(ellipse 16px 13px at 85% 90%, transparent 0 48%, var(--transition-accent) 52% 70%, transparent 74%),
+    radial-gradient(ellipse 16px 13px at 97% 90%, transparent 0 48%, var(--transition-accent) 52% 70%, transparent 74%);
+  --transition-pillar-right:
+    radial-gradient(ellipse 16px 13px at 3% 10%, transparent 0 48%, var(--transition-accent) 52% 70%, transparent 74%),
+    radial-gradient(ellipse 16px 13px at 15% 10%, transparent 0 48%, var(--transition-accent) 52% 70%, transparent 74%),
+    radial-gradient(ellipse 16px 13px at 3% 90%, transparent 0 48%, var(--transition-accent) 52% 70%, transparent 74%),
+    radial-gradient(ellipse 16px 13px at 15% 90%, transparent 0 48%, var(--transition-accent) 52% 70%, transparent 74%);
+}
+
+.page-transition[data-pillar="corinthian"] {
+  --transition-pillar-left:
+    radial-gradient(ellipse 7px 18px at 83% 11%, var(--transition-accent) 0 62%, transparent 66%),
+    radial-gradient(ellipse 7px 18px at 89% 9%, color-mix(in srgb, var(--transition-accent) 82%, white) 0 62%, transparent 66%),
+    radial-gradient(ellipse 7px 18px at 95% 9%, color-mix(in srgb, var(--transition-accent) 82%, white) 0 62%, transparent 66%),
+    radial-gradient(ellipse 7px 18px at 100% 11%, var(--transition-accent) 0 62%, transparent 66%);
+  --transition-pillar-right:
+    radial-gradient(ellipse 7px 18px at 17% 11%, var(--transition-accent) 0 62%, transparent 66%),
+    radial-gradient(ellipse 7px 18px at 11% 9%, color-mix(in srgb, var(--transition-accent) 82%, white) 0 62%, transparent 66%),
+    radial-gradient(ellipse 7px 18px at 5% 9%, color-mix(in srgb, var(--transition-accent) 82%, white) 0 62%, transparent 66%),
+    radial-gradient(ellipse 7px 18px at 0% 11%, var(--transition-accent) 0 62%, transparent 66%);
+}
+
+.page-transition[data-pillar="composite"] {
+  --transition-pillar-left:
+    radial-gradient(circle at 86% 10%, transparent 0 5px, var(--transition-accent) 5.5px 7px, transparent 7.5px),
+    radial-gradient(circle at 97% 10%, transparent 0 5px, var(--transition-accent) 5.5px 7px, transparent 7.5px),
+    radial-gradient(circle at 86% 90%, transparent 0 5px, var(--transition-accent) 5.5px 7px, transparent 7.5px),
+    radial-gradient(circle at 97% 90%, transparent 0 5px, var(--transition-accent) 5.5px 7px, transparent 7.5px);
+  --transition-pillar-right:
+    radial-gradient(circle at 3% 10%, transparent 0 5px, var(--transition-accent) 5.5px 7px, transparent 7.5px),
+    radial-gradient(circle at 14% 10%, transparent 0 5px, var(--transition-accent) 5.5px 7px, transparent 7.5px),
+    radial-gradient(circle at 3% 90%, transparent 0 5px, var(--transition-accent) 5.5px 7px, transparent 7.5px),
+    radial-gradient(circle at 14% 90%, transparent 0 5px, var(--transition-accent) 5.5px 7px, transparent 7.5px);
+}
+
 .page-transition::before {
   position: absolute;
   inset: 0;
   content: "";
   background:
-    radial-gradient(ellipse at 24% 45%, color-mix(in srgb, var(--transition-accent) 20%, transparent), transparent 48%),
-    linear-gradient(120deg, color-mix(in srgb, var(--transition-base) 78%, #071b2b), var(--transition-base) 58%, color-mix(in srgb, var(--transition-base) 82%, var(--transition-accent)));
+    radial-gradient(
+      ellipse at 24% 45%,
+      color-mix(in srgb, var(--transition-accent) 20%, transparent),
+      transparent 48%
+    ),
+    linear-gradient(
+      120deg,
+      color-mix(in srgb, var(--transition-base) 78%, #071b2b),
+      var(--transition-base) 58%,
+      color-mix(in srgb, var(--transition-base) 82%, var(--transition-accent))
+    );
   transform: translateX(-100%);
   will-change: transform;
 }
 
-.page-transition.is-entering::before {
-  animation: signal-reveal 560ms cubic-bezier(0.65, 0, 0.35, 1) both;
-}
-
-.page-transition.is-leaving::before {
-  transform: translateX(-100%);
-  animation: signal-cover 520ms cubic-bezier(0.65, 0, 0.35, 1) both;
-}
-
-.page-transition__trace {
+.page-transition.is-curtain::before,
+.page-transition.is-curtain::after {
   position: absolute;
-  z-index: 1;
-  height: 1px;
-  opacity: 0;
-  background: linear-gradient(90deg, transparent, var(--transition-accent) 14%, var(--transition-accent) 86%, transparent);
-  box-shadow: 0 0 9px color-mix(in srgb, var(--transition-accent) 70%, transparent);
-  transform: scaleX(0);
-  transform-origin: left;
-}
-
-.page-transition__trace::after {
-  position: absolute;
-  top: -2px;
-  right: 12%;
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
+  top: 0;
+  bottom: 0;
+  width: 50%;
   content: "";
-  background: var(--transition-accent);
-  box-shadow: 0 0 10px color-mix(in srgb, var(--transition-accent) 90%, transparent);
+  transform: translateX(0);
+  will-change: transform;
 }
 
-.page-transition__trace-one {
-  top: 35%;
-  left: 9%;
-  width: 48%;
+.page-transition.is-curtain::before {
+  right: auto;
+  left: 0;
+  clip-path: polygon(
+    0 0,
+    102% 0,
+    108% 8%,
+    111% 16%,
+    108% 24%,
+    104% 32%,
+    103% 40%,
+    102% 48%,
+    103% 56%,
+    109% 64%,
+    112% 72%,
+    109% 80%,
+    104% 88%,
+    103% 96%,
+    103% 100%,
+    0 100%
+  );
+  background: linear-gradient(
+    115deg,
+    color-mix(in srgb, var(--transition-base) 76%, #10080a),
+    var(--transition-base) 100%
+  );
+  background-image:
+    var(--transition-pillar-left, none),
+    linear-gradient(
+      90deg,
+      transparent 82%,
+      var(--transition-accent) 83% 85%,
+      color-mix(in srgb, var(--transition-base) 8%, var(--transition-accent)) 86% 96%,
+      var(--transition-accent) 97% 100%
+    ),
+    radial-gradient(
+      ellipse 48px 9px at 91% 8%,
+      var(--transition-accent) 0 68%,
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 48px 9px at 91% 92%,
+      var(--transition-accent) 0 68%,
+      transparent 70%
+    ),
+    repeating-linear-gradient(
+      45deg,
+      transparent 0 35px,
+      color-mix(in srgb, var(--transition-accent) 12%, transparent) 36px 37px,
+      transparent 38px 72px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      transparent 0 48px,
+      color-mix(in srgb, var(--transition-accent) 8%, transparent) 49px 50px,
+      transparent 51px 100px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 54px,
+      color-mix(in srgb, var(--transition-accent) 11%, transparent) 55px 56px,
+      transparent 57px 110px
+    ),
+    linear-gradient(
+      0deg,
+      transparent 8%,
+      color-mix(in srgb, var(--transition-accent) 14%, transparent) 8.2%,
+      transparent 8.5% 91.5%,
+      color-mix(in srgb, var(--transition-accent) 14%, transparent) 91.8%,
+      transparent 92%
+    ),
+    linear-gradient(
+      115deg,
+      color-mix(in srgb, var(--transition-base) 76%, #10080a),
+      var(--transition-base) 100%
+    );
 }
 
-.page-transition__trace-two {
-  top: 52%;
-  left: 38%;
-  width: 54%;
+.page-transition.is-curtain::after {
+  right: 0;
+  left: auto;
+  clip-path: polygon(
+    -2% 0,
+    100% 0,
+    100% 100%,
+    -2% 100%,
+    -3% 96%,
+    -2% 88%,
+    -4% 80%,
+    -9% 72%,
+    -12% 64%,
+    -9% 56%,
+    -3% 48%,
+    -2% 40%,
+    -2% 32%,
+    -4% 24%,
+    -8% 16%,
+    -11% 8%
+  );
+  background: linear-gradient(
+    245deg,
+    color-mix(in srgb, var(--transition-base) 76%, #10080a),
+    var(--transition-base) 100%
+  );
+  background-image:
+    var(--transition-pillar-right, none),
+    linear-gradient(
+      90deg,
+      var(--transition-accent) 0 3%,
+      color-mix(in srgb, var(--transition-base) 8%, var(--transition-accent)) 4% 14%,
+      var(--transition-accent) 15% 17%,
+      transparent 18%
+    ),
+    radial-gradient(
+      ellipse 48px 9px at 9% 8%,
+      var(--transition-accent) 0 68%,
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 48px 9px at 9% 92%,
+      var(--transition-accent) 0 68%,
+      transparent 70%
+    ),
+    repeating-linear-gradient(
+      45deg,
+      transparent 0 35px,
+      color-mix(in srgb, var(--transition-accent) 12%, transparent) 36px 37px,
+      transparent 38px 72px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      transparent 0 48px,
+      color-mix(in srgb, var(--transition-accent) 8%, transparent) 49px 50px,
+      transparent 51px 100px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 54px,
+      color-mix(in srgb, var(--transition-accent) 11%, transparent) 55px 56px,
+      transparent 57px 110px
+    ),
+    linear-gradient(
+      0deg,
+      transparent 8%,
+      color-mix(in srgb, var(--transition-accent) 14%, transparent) 8.2%,
+      transparent 8.5% 91.5%,
+      color-mix(in srgb, var(--transition-accent) 14%, transparent) 91.8%,
+      transparent 92%
+    ),
+    linear-gradient(
+      245deg,
+      color-mix(in srgb, var(--transition-base) 76%, #10080a),
+      var(--transition-base) 100%
+    );
 }
 
-.page-transition__trace-three {
-  top: 69%;
-  left: 17%;
-  width: 39%;
+.page-transition.is-curtain.is-entering::before {
+  animation: curtain-open-left 820ms cubic-bezier(0.7, 0, 0.3, 1) both;
 }
 
-.page-transition.is-leaving .page-transition__trace {
-  animation: signal-trace 420ms 50ms cubic-bezier(0.65, 0, 0.35, 1) both;
+.page-transition.is-curtain.is-entering::after {
+  animation: curtain-open-right 820ms cubic-bezier(0.7, 0, 0.3, 1) both;
 }
 
-.page-transition.is-entering .page-transition__trace {
-  animation: signal-trace-clear 300ms ease-out both;
+.page-transition.is-curtain.is-leaving::before {
+  animation: curtain-close-left 820ms cubic-bezier(0.7, 0, 0.3, 1) both;
+}
+
+.page-transition.is-curtain.is-leaving::after {
+  animation: curtain-close-right 820ms cubic-bezier(0.7, 0, 0.3, 1) both;
 }
 
 body.is-page-entering main {
   animation: page-content-arrive 520ms 100ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-@keyframes signal-cover {
+@keyframes curtain-open-left {
+  to {
+    transform: translateX(-124%);
+  }
+}
+
+@keyframes curtain-open-right {
+  to {
+    transform: translateX(124%);
+  }
+}
+
+@keyframes curtain-close-left {
   from {
-    transform: translateX(-100%);
+    transform: translateX(-124%);
   }
 
   to {
@@ -168,27 +377,13 @@ body.is-page-entering main {
   }
 }
 
-@keyframes signal-reveal {
+@keyframes curtain-close-right {
   from {
+    transform: translateX(124%);
+  }
+
+  to {
     transform: translateX(0);
-  }
-
-  to {
-    transform: translateX(100%);
-  }
-}
-
-@keyframes signal-trace {
-  to {
-    opacity: 0.9;
-    transform: scaleX(1);
-  }
-}
-
-@keyframes signal-trace-clear {
-  to {
-    opacity: 0;
-    transform: scaleX(1);
   }
 }
 
@@ -210,7 +405,6 @@ body.is-page-entering main {
     animation: none !important;
   }
 }
-
 
 /* ==========================================================================
    SECTION 2: SHARED LAYOUT & NAVIGATION (HEADER, NAVBAR, BRAND)
@@ -271,12 +465,12 @@ body.is-page-entering main {
   position: relative;
 }
 
-.nav-wrap>*,
-.hero-grid>*,
-.section-heading>*,
-.directory-toolbar>*,
-.detail-grid>*,
-.detail-columns>* {
+.nav-wrap > *,
+.hero-grid > *,
+.section-heading > *,
+.directory-toolbar > *,
+.detail-grid > *,
+.detail-columns > * {
   min-width: 0;
 }
 
@@ -332,7 +526,8 @@ body.is-page-entering main {
 
 .inner-header .brand-mark {
   font-size: 0;
-  background: url("../assets/logo/logo-samanvaya.webp") center / contain no-repeat;
+  background: url("../assets/logo/logo-samanvaya.webp") center / contain
+    no-repeat;
 }
 
 .inner-header .brand strong,
@@ -407,7 +602,7 @@ body.is-page-entering main {
 .brand-copy,
 .brand-copy strong,
 .brand-copy small,
-.brand>span:last-child {
+.brand > span:last-child {
   min-width: 0;
 }
 
@@ -493,7 +688,9 @@ body.is-page-entering main {
   margin: 4px auto;
   border-radius: 2px;
   background: currentColor;
-  transition: transform 0.2s ease, opacity 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
 }
 
 .menu-toggle span:first-child {
@@ -528,7 +725,6 @@ body.is-page-entering main {
 .menu-toggle.open::before {
   opacity: 0;
 }
-
 
 /* ==========================================================================
    SECTION 3: SHARED UTILITIES & COMPONENTS
@@ -583,7 +779,8 @@ body.is-page-entering main {
   padding: 14px 19px;
   font-size: 13px;
   font-weight: 700;
-  transition: transform 0.2s,
+  transition:
+    transform 0.2s,
     background 0.2s;
 }
 
@@ -657,7 +854,8 @@ body.is-page-entering main {
 .reveal {
   opacity: 0;
   transform: translateY(18px);
-  transition: opacity 0.7s ease,
+  transition:
+    opacity 0.7s ease,
     transform 0.7s ease;
 }
 
@@ -690,18 +888,44 @@ body.is-page-entering main {
   content: "";
   opacity: 0.34;
   background:
-    linear-gradient(90deg, transparent 0 19%, rgba(229, 182, 76, 0.22) 19.1%, transparent 19.3% 100%),
-    linear-gradient(0deg, transparent 0 72%, rgba(229, 182, 76, 0.18) 72.1%, transparent 72.3% 100%),
-    linear-gradient(90deg, transparent 49.8%, rgba(220, 232, 239, 0.15) 50%, transparent 50.2%),
+    linear-gradient(
+      90deg,
+      transparent 0 19%,
+      rgba(229, 182, 76, 0.22) 19.1%,
+      transparent 19.3% 100%
+    ),
+    linear-gradient(
+      0deg,
+      transparent 0 72%,
+      rgba(229, 182, 76, 0.18) 72.1%,
+      transparent 72.3% 100%
+    ),
+    linear-gradient(
+      90deg,
+      transparent 49.8%,
+      rgba(220, 232, 239, 0.15) 50%,
+      transparent 50.2%
+    ),
     linear-gradient(rgba(220, 232, 239, 0.08) 1px, transparent 1px),
     linear-gradient(90deg, rgba(220, 232, 239, 0.08) 1px, transparent 1px);
-  background-size: 100% 100%, 100% 100%, 100% 100%, 56px 56px, 56px 56px;
-  mask-image: linear-gradient(115deg, transparent 5%, black 34%, black 82%, transparent 100%);
+  background-size:
+    100% 100%,
+    100% 100%,
+    100% 100%,
+    56px 56px,
+    56px 56px;
+  mask-image: linear-gradient(
+    115deg,
+    transparent 5%,
+    black 34%,
+    black 82%,
+    transparent 100%
+  );
   animation: tech-drift 18s linear infinite;
   pointer-events: none;
 }
 
-.inner-hero>.container {
+.inner-hero > .container {
   position: relative;
   z-index: 1;
 }
@@ -710,10 +934,29 @@ body.is-page-entering main {
   opacity: 0.56;
   background:
     radial-gradient(circle at 77% 34%, var(--yellow) 0 3px, transparent 4px),
-    radial-gradient(circle at 86% 63%, rgba(220, 232, 239, 0.8) 0 2px, transparent 3px),
-    linear-gradient(132deg, transparent 0 66%, rgba(229, 182, 76, 0.6) 66.2%, transparent 66.5%),
-    linear-gradient(132deg, transparent 0 73%, rgba(220, 232, 239, 0.3) 73.2%, transparent 73.5%),
-    linear-gradient(132deg, transparent 0 80%, rgba(220, 232, 239, 0.22) 80.2%, transparent 80.5%);
+    radial-gradient(
+      circle at 86% 63%,
+      rgba(220, 232, 239, 0.8) 0 2px,
+      transparent 3px
+    ),
+    linear-gradient(
+      132deg,
+      transparent 0 66%,
+      rgba(229, 182, 76, 0.6) 66.2%,
+      transparent 66.5%
+    ),
+    linear-gradient(
+      132deg,
+      transparent 0 73%,
+      rgba(220, 232, 239, 0.3) 73.2%,
+      transparent 73.5%
+    ),
+    linear-gradient(
+      132deg,
+      transparent 0 80%,
+      rgba(220, 232, 239, 0.22) 80.2%,
+      transparent 80.5%
+    );
   mask-image: linear-gradient(90deg, transparent 10%, black 53%, black 100%);
   animation: circuit-pan 14s ease-in-out infinite alternate;
 }
@@ -721,20 +964,55 @@ body.is-page-entering main {
 .inner-hero-news::after {
   opacity: 0.5;
   background:
-    radial-gradient(circle, rgba(229, 182, 76, 0.7) 0 2px, transparent 2.5px) 0 0 / 28px 28px,
-    linear-gradient(90deg, transparent 0 12%, rgba(220, 232, 239, 0.18) 12.1%, transparent 12.3% 100%),
-    repeating-linear-gradient(0deg, transparent 0 45px, rgba(220, 232, 239, 0.13) 46px, transparent 47px);
-  mask-image: linear-gradient(108deg, transparent 0, black 30%, black 92%, transparent 100%);
+    radial-gradient(circle, rgba(229, 182, 76, 0.7) 0 2px, transparent 2.5px) 0
+      0 / 28px 28px,
+    linear-gradient(
+      90deg,
+      transparent 0 12%,
+      rgba(220, 232, 239, 0.18) 12.1%,
+      transparent 12.3% 100%
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 45px,
+      rgba(220, 232, 239, 0.13) 46px,
+      transparent 47px
+    );
+  mask-image: linear-gradient(
+    108deg,
+    transparent 0,
+    black 30%,
+    black 92%,
+    transparent 100%
+  );
   animation: news-scan 12s linear infinite;
 }
 
 .inner-hero-events::after {
   opacity: 0.54;
   background:
-    radial-gradient(circle at 78% 28%, rgba(229, 182, 76, 0.8) 0 3px, transparent 4px),
-    radial-gradient(circle at 88% 68%, rgba(229, 182, 76, 0.55) 0 2px, transparent 3px),
-    repeating-linear-gradient(115deg, transparent 0 38px, rgba(220, 232, 239, 0.16) 39px, transparent 40px),
-    linear-gradient(115deg, transparent 0 67%, rgba(229, 182, 76, 0.42) 67.2%, transparent 67.6%);
+    radial-gradient(
+      circle at 78% 28%,
+      rgba(229, 182, 76, 0.8) 0 3px,
+      transparent 4px
+    ),
+    radial-gradient(
+      circle at 88% 68%,
+      rgba(229, 182, 76, 0.55) 0 2px,
+      transparent 3px
+    ),
+    repeating-linear-gradient(
+      115deg,
+      transparent 0 38px,
+      rgba(220, 232, 239, 0.16) 39px,
+      transparent 40px
+    ),
+    linear-gradient(
+      115deg,
+      transparent 0 67%,
+      rgba(229, 182, 76, 0.42) 67.2%,
+      transparent 67.6%
+    );
   mask-image: linear-gradient(90deg, transparent 6%, black 47%, black 100%);
   animation: schedule-shift 16s ease-in-out infinite alternate;
 }
@@ -853,7 +1131,6 @@ body.is-page-entering main {
   background: var(--coral);
 }
 
-
 /* ==========================================================================
    SECTION 4: PAGE - index.html (HOMEPAGE)
    Hero Section, Intro, Fokus Program, News Cards, & Closing CTA
@@ -874,14 +1151,13 @@ body.is-page-entering main {
   z-index: 0;
   content: "";
   background:
-    linear-gradient(rgba(19, 43, 59, 0.55),
-      rgba(19, 43, 59, 0.55)),
+    linear-gradient(rgba(19, 43, 59, 0.55), rgba(19, 43, 59, 0.55)),
     url("../assets/images/GedungUBP.webp") center / cover no-repeat;
   filter: blur(5px);
   transform: scale(1.04);
 }
 
-.hero>* {
+.hero > * {
   position: relative;
   z-index: 1;
 }
@@ -899,74 +1175,163 @@ body.is-page-entering main {
   width: fit-content;
 }
 
-.hero h1>span {
+.hero h1 > span {
   display: inline-block;
   margin-right: -0.04em;
   color: transparent;
-  background: linear-gradient(115deg, #000 0%, #164b83 20%, #267eae 36%, #77d0f0 46%, #f3fbff 50%, #77d0f0 54%, #267eae 68%, #0d2d4a 84%, #000 100%);
+  background: linear-gradient(
+    115deg,
+    #000 0%,
+    #164b83 20%,
+    #267eae 36%,
+    #77d0f0 46%,
+    #f3fbff 50%,
+    #77d0f0 54%,
+    #267eae 68%,
+    #0d2d4a 84%,
+    #000 100%
+  );
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.hero h1>span:last-child {
+.hero h1 > span:last-child {
   margin-right: 0;
 }
 
-.hero h1>span:nth-child(1) {
-  background-image: linear-gradient(118deg, #000 0%, #164b83 20%, #267eae 36%, #77d0f0 46%, #f3fbff 50%, #77d0f0 54%, #267eae 70%, #0d2d4a 86%, #000 100%);
+.hero h1 > span:nth-child(1) {
+  background-image: linear-gradient(
+    118deg,
+    #000 0%,
+    #164b83 20%,
+    #267eae 36%,
+    #77d0f0 46%,
+    #f3fbff 50%,
+    #77d0f0 54%,
+    #267eae 70%,
+    #0d2d4a 86%,
+    #000 100%
+  );
 }
 
-.hero h1>span:nth-child(2) {
-  background-image: linear-gradient(72deg, #164b83 0%, #58bce8 23%, #267eae 36%, #77d0f0 46%, #f3fbff 50%, #77d0f0 54%, #267eae 67%, #000 84%, #0d2d4a 100%);
+.hero h1 > span:nth-child(2) {
+  background-image: linear-gradient(
+    72deg,
+    #164b83 0%,
+    #58bce8 23%,
+    #267eae 36%,
+    #77d0f0 46%,
+    #f3fbff 50%,
+    #77d0f0 54%,
+    #267eae 67%,
+    #000 84%,
+    #0d2d4a 100%
+  );
 }
 
-.hero h1>span:nth-child(3) {
-  background-image: linear-gradient(125deg, #000 0%, #164b83 18%, #58bce8 30%, #267eae 41%, #77d0f0 48%, #f3fbff 51%, #77d0f0 56%, #58bce8 68%, #0d2d4a 84%, #000 100%);
+.hero h1 > span:nth-child(3) {
+  background-image: linear-gradient(
+    125deg,
+    #000 0%,
+    #164b83 18%,
+    #58bce8 30%,
+    #267eae 41%,
+    #77d0f0 48%,
+    #f3fbff 51%,
+    #77d0f0 56%,
+    #58bce8 68%,
+    #0d2d4a 84%,
+    #000 100%
+  );
 }
 
-.hero h1>span:nth-child(4) {
-  background-image: linear-gradient(108deg, #0d2d4a 0%, #58bce8 20%, #164b83 34%, #267eae 42%, #77d0f0 48%, #f3fbff 51%, #77d0f0 56%, #267eae 72%, #000 100%);
+.hero h1 > span:nth-child(4) {
+  background-image: linear-gradient(
+    108deg,
+    #0d2d4a 0%,
+    #58bce8 20%,
+    #164b83 34%,
+    #267eae 42%,
+    #77d0f0 48%,
+    #f3fbff 51%,
+    #77d0f0 56%,
+    #267eae 72%,
+    #000 100%
+  );
 }
 
-.hero h1>span:nth-child(5) {
-  background-image: linear-gradient(76deg, #000 0%, #164b83 20%, #58bce8 39%, #77d0f0 48%, #f3fbff 51%, #77d0f0 55%, #267eae 68%, #164b83 82%, #000 100%);
+.hero h1 > span:nth-child(5) {
+  background-image: linear-gradient(
+    76deg,
+    #000 0%,
+    #164b83 20%,
+    #58bce8 39%,
+    #77d0f0 48%,
+    #f3fbff 51%,
+    #77d0f0 55%,
+    #267eae 68%,
+    #164b83 82%,
+    #000 100%
+  );
 }
 
-.hero h1>span:nth-child(6) {
-  background-image: linear-gradient(132deg, #58bce8 0%, #267eae 19%, #164b83 35%, #000 47%, #f3fbff 50%, #77d0f0 54%, #58bce8 64%, #0d2d4a 82%, #000 100%);
+.hero h1 > span:nth-child(6) {
+  background-image: linear-gradient(
+    132deg,
+    #58bce8 0%,
+    #267eae 19%,
+    #164b83 35%,
+    #000 47%,
+    #f3fbff 50%,
+    #77d0f0 54%,
+    #58bce8 64%,
+    #0d2d4a 82%,
+    #000 100%
+  );
 }
 
-.hero h1>span:nth-child(7) {
-  background-image: linear-gradient(65deg, #000 0%, #164b83 20%, #267eae 32%, #58bce8 43%, #f3fbff 47%, #77d0f0 52%, #58bce8 62%, #164b83 78%, #000 100%);
+.hero h1 > span:nth-child(7) {
+  background-image: linear-gradient(
+    65deg,
+    #000 0%,
+    #164b83 20%,
+    #267eae 32%,
+    #58bce8 43%,
+    #f3fbff 47%,
+    #77d0f0 52%,
+    #58bce8 62%,
+    #164b83 78%,
+    #000 100%
+  );
 }
 
-.hero h1>span {
+.hero h1 > span {
   background-size: 220% 100%;
   animation: hero-title-shimmer 7s ease-in-out infinite;
 }
 
-.hero h1>span:nth-child(2) {
+.hero h1 > span:nth-child(2) {
   animation-delay: -0.25s;
 }
 
-.hero h1>span:nth-child(3) {
+.hero h1 > span:nth-child(3) {
   animation-delay: -0.5s;
 }
 
-.hero h1>span:nth-child(4) {
+.hero h1 > span:nth-child(4) {
   animation-delay: -0.75s;
 }
 
-.hero h1>span:nth-child(5) {
+.hero h1 > span:nth-child(5) {
   animation-delay: -1s;
 }
 
-.hero h1>span:nth-child(6) {
+.hero h1 > span:nth-child(6) {
   animation-delay: -1.25s;
 }
 
-.hero h1>span:nth-child(7) {
+.hero h1 > span:nth-child(7) {
   animation-delay: -1.5s;
 }
 
@@ -998,8 +1363,7 @@ body.is-page-entering main {
   align-items: center;
 }
 
-.hero h1,
-.closing h2 {
+.hero h1 {
   margin: 0;
   font-family: "orbitron", sans-serif;
   font-size: clamp(58px, 8vw, 106px);
@@ -1043,11 +1407,17 @@ h2 em {
   width: 285px;
   height: 250px;
   opacity: 0.34;
-  background-image: linear-gradient(rgba(134, 170, 188, 0.22) 1px, transparent 1px),
+  background-image:
+    linear-gradient(rgba(134, 170, 188, 0.22) 1px, transparent 1px),
     linear-gradient(90deg, rgba(134, 170, 188, 0.22) 1px, transparent 1px);
   background-size: 28px 28px;
   transform: rotate(-7deg);
-  mask-image: linear-gradient(135deg, transparent 3%, black 35%, transparent 96%);
+  mask-image: linear-gradient(
+    135deg,
+    transparent 3%,
+    black 35%,
+    transparent 96%
+  );
 }
 
 .art-data {
@@ -1126,19 +1496,56 @@ h2 em {
   bottom: 63px;
   display: grid;
   grid-template-columns: 1fr 18px;
-  gap: 7px 12px;
-  width: 92px;
-  padding: 12px;
-  border: 1px solid rgba(137, 174, 190, 0.32);
-  color: #8aafbf;
-  background: rgba(8, 35, 50, 0.42);
-  font: 700 10px/1 monospace;
+  opacity: 0.34;
+  background-image:
+    radial-gradient(
+      ellipse 18px 35px at 50% 0%,
+      transparent 62%,
+      rgba(244, 207, 131, 0.48) 65% 69%,
+      transparent 72%
+    ),
+    radial-gradient(
+      ellipse 18px 35px at 50% 100%,
+      transparent 62%,
+      rgba(244, 207, 131, 0.48) 65% 69%,
+      transparent 72%
+    ),
+    radial-gradient(
+      ellipse 35px 18px at 0% 50%,
+      transparent 62%,
+      rgba(244, 207, 131, 0.48) 65% 69%,
+      transparent 72%
+    ),
+    radial-gradient(
+      ellipse 35px 18px at 100% 50%,
+      transparent 62%,
+      rgba(244, 207, 131, 0.48) 65% 69%,
+      transparent 72%
+    ),
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(255, 213, 125, 0.72) 0 2px,
+      transparent 2.5px
+    ),
+    linear-gradient(
+      90deg,
+      transparent 49.7%,
+      rgba(255, 213, 125, 0.1) 49.8% 50.2%,
+      transparent 50.3%
+    ),
+    linear-gradient(
+      0deg,
+      transparent 49.7%,
+      rgba(255, 213, 125, 0.1) 49.8% 50.2%,
+      transparent 50.3%
+    );
+  background-size: 180px 180px;
   transform: rotate(7deg);
 }
 
 .art-terminal span {
   grid-row: span 3;
-  align-self: center;
+    background-position: 180px 0;
   color: var(--coral);
   font-size: 17px;
 }
@@ -1359,7 +1766,7 @@ h2 em {
   text-transform: uppercase;
 }
 
-.hero-footer>span:first-child {
+.hero-footer > span:first-child {
   color: white;
 }
 
@@ -1425,24 +1832,63 @@ h2 em {
   z-index: -1;
   content: "";
   background:
-    linear-gradient(rgba(209, 224, 233, 0.86) 0%,
-      rgba(209, 224, 233, 0.58) 28%,
-      rgba(209, 224, 233, 0.2) 62%,
-      rgba(209, 224, 233, 0.08) 100%),
-    url("../assets/images/TechnoVisionEvent.webp") center 58% / cover no-repeat;
+  opacity: 0.34;
+  background-image:
+    radial-gradient(
+      ellipse 18px 35px at 50% 0%,
+      transparent 62%,
+      rgba(244, 207, 131, 0.48) 65% 69%,
+      transparent 72%
+    ),
+    radial-gradient(
+      ellipse 18px 35px at 50% 100%,
+      transparent 62%,
+      rgba(244, 207, 131, 0.48) 65% 69%,
+      transparent 72%
+    ),
+    radial-gradient(
+      ellipse 35px 18px at 0% 50%,
+      transparent 62%,
+      rgba(244, 207, 131, 0.48) 65% 69%,
+      transparent 72%
+    ),
+    radial-gradient(
+      ellipse 35px 18px at 100% 50%,
+      transparent 62%,
+      rgba(244, 207, 131, 0.48) 65% 69%,
+      transparent 72%
+    ),
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(255, 213, 125, 0.72) 0 2px,
+      transparent 2.5px
+    ),
+    linear-gradient(
+      90deg,
+      transparent 49.7%,
+      rgba(255, 213, 125, 0.1) 49.8% 50.2%,
+      transparent 50.3%
+    ),
+    linear-gradient(
+      0deg,
+      transparent 49.7%,
+      rgba(255, 213, 125, 0.1) 49.8% 50.2%,
+      transparent 50.3%
+    );
+  background-size: 180px 180px;
   filter: blur(2px);
   transform: scale(1.04);
 }
 
 .focus.section-space {
-  padding-top: 60px;
+    background-position: 180px 0;
 }
 
 .focus .section-heading {
   display: block;
 }
 
-.focus .section-heading>div,
+.focus .section-heading > div,
 .focus .section-heading h2 {
   width: 100%;
 }
@@ -1517,7 +1963,7 @@ h2 em {
   color: #b6c5ca;
 }
 
-.focus-item>a {
+.focus-item > a {
   display: inline-flex;
   align-items: center;
   gap: 10px;
@@ -1526,10 +1972,12 @@ h2 em {
   color: var(--ink);
   font-size: 13px;
   font-weight: 700;
-  transition: color 0.2s ease, transform 0.2s ease;
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
 }
 
-.focus-item>a:hover {
+.focus-item > a:hover {
   color: var(--coral);
   transform: translateY(-2px);
 }
@@ -1543,20 +1991,23 @@ h2 em {
   border-radius: 50%;
   font-size: 16px;
   line-height: 1;
-  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease,
+    border-color 0.2s ease;
 }
 
-.focus-item>a:hover .focus-link-icon {
+.focus-item > a:hover .focus-link-icon {
   color: white;
   background: var(--coral);
   border-color: var(--coral);
 }
 
-.focus-featured>a {
+.focus-featured > a {
   color: white;
 }
 
-.focus-item>a:focus-visible {
+.focus-item > a:focus-visible {
   outline: 2px solid var(--coral);
   outline-offset: 4px;
 }
@@ -1567,11 +2018,11 @@ main:has(> .news) {
   flex-direction: column;
 }
 
-main:has(> .news)>.news {
+main:has(> .news) > .news {
   order: 3;
 }
 
-main:has(> .news)>.closing {
+main:has(> .news) > .closing {
   order: 4;
 }
 
@@ -1665,36 +2116,244 @@ main:has(> .news)>.closing {
 
 /* Closing CTA Section Homepage */
 .closing {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   padding: 75px 0 85px;
-  color: #54242a;
-  background: var(--sky);
+  color: #fff0ca;
+  background: linear-gradient(118deg, #3b151e, #54232b 52%, #3b151e);
+}
+
+.closing-logo-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.closing-logo-ghost {
+  position: absolute;
+  height: auto;
+  opacity: 0.16;
+  filter: blur(0.65px) brightness(1.55) saturate(0.7)
+    drop-shadow(0 0 12px rgba(239, 198, 113, 0.2));
+  transform-origin: center;
+  animation: closing-logo-drift var(--drift-duration) ease-in-out infinite alternate;
+}
+
+.ghost-one {
+  top: 5%;
+  left: 1%;
+  width: clamp(100px, 18vw, 220px);
+  --drift-x: 18px;
+  --drift-y: 16px;
+  --rotation-start: -14deg;
+  --rotation-end: -5deg;
+  --drift-duration: 23s;
+  animation-delay: -7s;
+}
+
+.ghost-two {
+  top: 18%;
+  right: 3%;
+  width: clamp(58px, 10vw, 120px);
+  --drift-x: -14px;
+  --drift-y: 20px;
+  --rotation-start: 17deg;
+  --rotation-end: 8deg;
+  --drift-duration: 19s;
+  animation-delay: -3s;
+}
+
+.ghost-three {
+  bottom: 5%;
+  left: 9%;
+  width: clamp(70px, 13vw, 156px);
+  --drift-x: 22px;
+  --drift-y: -13px;
+  --rotation-start: 7deg;
+  --rotation-end: 16deg;
+  --drift-duration: 26s;
+  animation-delay: -12s;
+}
+
+.ghost-four {
+  right: 8%;
+  bottom: 4%;
+  width: clamp(100px, 20vw, 240px);
+  --drift-x: -20px;
+  --drift-y: -15px;
+  --rotation-start: -11deg;
+  --rotation-end: -20deg;
+  --drift-duration: 28s;
+  animation-delay: -16s;
+}
+
+.ghost-five {
+  top: 4%;
+  left: 38%;
+  width: clamp(52px, 8vw, 96px);
+  --drift-x: -12px;
+  --drift-y: 18px;
+  --rotation-start: 22deg;
+  --rotation-end: 10deg;
+  --drift-duration: 21s;
+  animation-delay: -9s;
+}
+
+.ghost-six {
+  right: 36%;
+  bottom: 3%;
+  width: clamp(64px, 11vw, 132px);
+  --drift-x: 16px;
+  --drift-y: -12px;
+  --rotation-start: -8deg;
+  --rotation-end: 4deg;
+  --drift-duration: 25s;
+  animation-delay: -5s;
+}
+
+.closing::after {
+  position: absolute;
+  inset: -20% auto -20% -45%;
+  z-index: 0;
+  width: 36%;
+  content: "";
+  pointer-events: none;
+  opacity: 0.65;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 248, 216, 0.42),
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transform: skewX(-18deg);
+  animation: closing-light-pass 5s ease-in-out infinite;
+}
+
+@keyframes closing-logo-drift {
+  from {
+    transform: translate3d(0, 0, 0) rotate(var(--rotation-start));
+  }
+
+  to {
+    transform: translate3d(var(--drift-x), var(--drift-y), 0)
+      rotate(var(--rotation-end));
+  }
+}
+
+@keyframes closing-light-pass {
+  from {
+    transform: translateX(0) skewX(-18deg);
+  }
+
+  to {
+    transform: translateX(430%) skewX(-18deg);
+  }
 }
 
 .closing-inner {
+  position: relative;
+  z-index: 2;
   text-align: center;
 }
 
 .closing .eyebrow {
-  margin-bottom: 22px;
-}
-
-.closing h2 {
-  font-size: clamp(50px, 7vw, 86px);
   margin-bottom: 26px;
 }
 
-.closing h2 em {
-  color: #54242a;
+.closing .button {
+  padding: 16px 26px;
+  color: #451923;
+  border: 1px solid rgba(255, 240, 202, 0.3);
+  background: #e8bd66;
+  box-shadow: 0 8px 20px rgba(20, 5, 8, 0.22);
+  font-size: 14px;
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.closing .button:hover {
+  transform: translateY(-3px);
+  background: #f0cc7f;
+  box-shadow: 0 12px 24px rgba(20, 5, 8, 0.3);
+}
+
+.closing .button:focus-visible {
+  outline: 2px solid #fff0ca;
+  outline-offset: 4px;
+}
+
+.closing-logo-stage {
+  position: relative;
+  display: block;
+  width: min(390px, 82vw);
+  height: min(205px, 52vw);
+  margin: 0 auto 18px;
+}
+
+.closing-logo-stage::before {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  content: "";
+  background: #ffd57d;
+  -webkit-mask-image: url("../assets/logo/logo-samanvaya.webp");
+  mask-image: url("../assets/logo/logo-samanvaya.webp");
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  filter: blur(16px);
+  opacity: 0.62;
+  animation: closing-logo-aura 4.5s ease-in-out infinite;
 }
 
 .closing-logo {
+  position: relative;
+  z-index: 1;
   display: block;
-  width: min(390px, 82vw);
-  height: 205px;
-  margin: 0 auto 18px;
+  width: 100%;
+  height: 100%;
+  margin: 0;
   object-fit: contain;
+  animation: closing-logo-glow 4.5s ease-in-out infinite;
+  filter: drop-shadow(0 0 12px rgba(255, 213, 125, 0.22))
+    drop-shadow(0 10px 12px rgba(20, 5, 8, 0.24));
 }
 
+@keyframes closing-logo-aura {
+  0%,
+  100% {
+    opacity: 0.44;
+    filter: blur(14px);
+  }
+
+  50% {
+    opacity: 0.82;
+    filter: blur(22px);
+  }
+}
+
+@keyframes closing-logo-glow {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 12px rgba(255, 213, 125, 0.22))
+      drop-shadow(0 10px 12px rgba(20, 5, 8, 0.24));
+  }
+
+  50% {
+    filter: drop-shadow(0 0 20px rgba(255, 213, 125, 0.5))
+      drop-shadow(0 0 38px rgba(255, 213, 125, 0.24))
+      drop-shadow(0 16px 18px rgba(20, 5, 8, 0.3));
+  }
+}
 
 /* ==========================================================================
    SECTION 5: PAGE - kabinet.html (HALAMAN STRUKTUR KABINET)
@@ -1715,7 +2374,8 @@ main:has(> .news)>.closing {
   inset: -14%;
   z-index: -1;
   content: "";
-  background: url("../assets/logo/logo-samanvaya.webp") right 5% center / min(780px, 78vw) auto no-repeat;
+  background: url("../assets/logo/logo-samanvaya.webp") right 5% center /
+    min(780px, 78vw) auto no-repeat;
   filter: blur(4px);
   opacity: 0.22;
   transform: rotate(-8deg) scale(1.15);
@@ -1766,10 +2426,21 @@ main:has(> .news)>.closing {
 .cabinet-hero h1 {
   position: relative;
   margin: 0;
-  font: 600 clamp(58px, 8vw, 104px)/0.9 "Cinzel", serif;
+  font:
+    600 clamp(58px, 8vw, 104px)/0.9 "Cinzel",
+    serif;
   letter-spacing: -0.035em;
   color: transparent;
-  background: linear-gradient(100deg, #7d1d25 0%, #b83238 22%, #e0a64a 40%, #fff0b0 48%, #d84539 56%, #98222a 76%, #e5b64c 100%);
+  background: linear-gradient(
+    100deg,
+    #7d1d25 0%,
+    #b83238 22%,
+    #e0a64a 40%,
+    #fff0b0 48%,
+    #d84539 56%,
+    #98222a 76%,
+    #e5b64c 100%
+  );
   background-size: 220% 100%;
   background-position: 100% 50%;
   background-clip: text;
@@ -1778,7 +2449,7 @@ main:has(> .news)>.closing {
   animation: none;
 }
 
-.cabinet-hero h1>span,
+.cabinet-hero h1 > span,
 .cabinet-hero h1 em {
   display: block;
   background: inherit;
@@ -2111,7 +2782,7 @@ main:has(> .news)>.closing {
   border-bottom: 1px solid var(--line);
 }
 
-.department-heading>span {
+.department-heading > span {
   color: var(--coral);
   font: 600 13px var(--display);
 }
@@ -2167,7 +2838,7 @@ main:has(> .news)>.closing {
   display: none;
 }
 
-.person-card>span {
+.person-card > span {
   position: absolute;
   top: 28px;
   right: 25px;
@@ -2219,7 +2890,6 @@ main:has(> .news)>.closing {
   font-size: 13px;
 }
 
-
 /* ==========================================================================
    SECTION 7: PAGE - divisi.html (HALAMAN DAFTAR DIVISI)
    Division List, Division Rows, Link Detail, & Dropdown Accordion
@@ -2240,7 +2910,7 @@ main:has(> .news)>.closing {
   border-bottom: 1px solid var(--line);
 }
 
-.division-row>span {
+.division-row > span {
   color: var(--coral);
   font: 600 13px var(--display);
 }
@@ -2265,7 +2935,9 @@ main:has(> .news)>.closing {
 .division-detail-link {
   color: var(--ink);
   font-size: 25px;
-  transition: color 0.2s ease, transform 0.2s ease;
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
 }
 
 .division-detail-link:hover {
@@ -2315,7 +2987,6 @@ main:has(> .news)>.closing {
   color: var(--ink-soft);
   font-size: 13px;
 }
-
 
 /* ==========================================================================
    SECTION 8: PAGE - detail-divisi.html (HALAMAN DETAIL DIVISI)
@@ -2435,7 +3106,6 @@ main:has(> .news)>.closing {
   font: 600 12px var(--display);
 }
 
-
 /* ==========================================================================
    SECTION 9: PAGE - berita.html (HALAMAN BERITA & ARTIKEL)
    Article List Rows, Date Badges, News Categories, & Article Images
@@ -2484,7 +3154,11 @@ main:has(> .news)>.closing {
   position: absolute;
   inset: 0;
   content: "";
-  background: linear-gradient(180deg, rgba(20, 43, 66, 0.08), rgba(20, 43, 66, 0.72));
+  background: linear-gradient(
+    180deg,
+    rgba(20, 43, 66, 0.08),
+    rgba(20, 43, 66, 0.72)
+  );
 }
 
 .image-placeholder.article::after {
@@ -2498,11 +3172,11 @@ main:has(> .news)>.closing {
 }
 
 .article-image-makrab {
-  background-image: url('../assets/images/CigolosorUBP.jpg');
+  background-image: url("../assets/images/CigolosorUBP.jpg");
 }
 
 .article-image-rekrutmen {
-  background-image: url('../assets/images/Recruitment.jpg');
+  background-image: url("../assets/images/Recruitment.jpg");
   border-radius: 24px 0 24px 0;
 }
 
@@ -2696,7 +3370,6 @@ main:has(> .news)>.closing {
   font-size: 12px;
 }
 
-
 /* ==========================================================================
    SECTION 10: PAGE - kegiatan.html (HALAMAN AGENDA & KEGIATAN)
    Event Cards, Highlights, & Date Indicators
@@ -2808,7 +3481,9 @@ main:has(> .news)>.closing {
   font-weight: 700;
   opacity: 0;
   transform: translateY(4px);
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
 }
 
 .event-photo-trigger:hover .event-photo-hint,
@@ -2962,7 +3637,6 @@ main:has(> .news)>.closing {
   align-self: flex-start;
 }
 
-
 /* ==========================================================================
    SECTION 12: MEDIA QUERIES & RESPONSIVE DESIGN
    Mobile (<=760px), Reduced Motion, Tablet (768px-1023px), & Desktop (1024px+)
@@ -2985,7 +3659,7 @@ main:has(> .news)>.closing {
     gap: 8px;
   }
 
-  .brand>span:last-child {
+  .brand > span:last-child {
     min-width: 0;
     max-width: 145px;
   }
@@ -3169,7 +3843,7 @@ main:has(> .news)>.closing {
     display: block;
   }
 
-  .intro-grid>.section-label {
+  .intro-grid > .section-label {
     margin-bottom: 42px;
   }
 
@@ -3199,7 +3873,7 @@ main:has(> .news)>.closing {
     height: 230px;
   }
 
-  .news-heading>.text-link {
+  .news-heading > .text-link {
     margin-top: 25px;
   }
 
@@ -3246,7 +3920,7 @@ main:has(> .news)>.closing {
     min-height: 220px;
   }
 
-  .symbol-grid>div {
+  .symbol-grid > div {
     margin-top: 42px;
   }
 
@@ -3267,7 +3941,7 @@ main:has(> .news)>.closing {
     margin-top: 28px;
   }
 
-  .detail-panel+.detail-panel {
+  .detail-panel + .detail-panel {
     margin-top: 1px;
   }
 
@@ -3348,7 +4022,7 @@ main:has(> .news)>.closing {
     height: 125px;
   }
 
-  .article-row>div:last-child {
+  .article-row > div:last-child {
     grid-column: 1 / -1;
   }
 
@@ -3454,7 +4128,20 @@ main:has(> .news)>.closing {
     transform: none;
   }
 
-  .hero h1>span {
+  .hero h1 > span {
+    animation: none;
+  }
+
+  .closing::after {
+    animation: none;
+  }
+
+  .closing-logo-ghost {
+    animation: none;
+  }
+
+  .closing-logo-stage::before,
+  .closing-logo {
     animation: none;
   }
 
@@ -3467,7 +4154,7 @@ main:has(> .news)>.closing {
   }
 
   .cabinet-logo.is-pulsing,
-  .cabinet-hero h1>span,
+  .cabinet-hero h1 > span,
   .cabinet-hero h1 em {
     animation: none;
     filter: none;
