@@ -10,8 +10,8 @@ const pageTransitionThemes = {
   "index.html": {
     base: "#0a1e32",
     accent: "#56c6ee",
-    pillar: "doric",
-    badge: "BERANDA // RUANG TUMBUH",
+    pillar: "home",
+    title: "HIMATIF",
     code: "01",
     label: "SYS_CORE // CONNECT",
     meta: "RUANG TUMBUH & AKSI",
@@ -19,8 +19,8 @@ const pageTransitionThemes = {
   "kabinet.html": {
     base: "#4a121c",
     accent: "#e5b64c",
-    pillar: "ionic",
-    badge: "KABINET // SAMANVAYA SATYA",
+    pillar: "cabinet",
+    title: "KABINET",
     code: "02",
     label: "SAMANVAYA // 4 PILAR",
     meta: "KEKELUARGAAN • KOMPETENSI • ASPIRASI • TEKNOLOGI",
@@ -28,8 +28,8 @@ const pageTransitionThemes = {
   "divisi.html": {
     base: "#0c2c36",
     accent: "#4fd1c5",
-    pillar: "corinthian",
-    badge: "DIVISI // 8 RUANG GERAK",
+    pillar: "division",
+    title: "DIVISI",
     code: "03",
     label: "DIVISI // 8 PILAR GERAK",
     meta: "RUANG BELAJAR & BERKARYA",
@@ -37,8 +37,8 @@ const pageTransitionThemes = {
   "detail-divisi.html": {
     base: "#0c2c36",
     accent: "#4fd1c5",
-    pillar: "corinthian",
-    badge: "DETAIL DIVISI // STRUKTUR",
+    pillar: "division",
+    title: "DIVISI",
     code: "03",
     label: "DIVISI // PROGRAM KERJA",
     meta: "STRUKTUR & PERAN PENGURUS",
@@ -46,8 +46,8 @@ const pageTransitionThemes = {
   "berita.html": {
     base: "#38290f",
     accent: "#f0be54",
-    pillar: "composite",
-    badge: "BERITA // WARTA & ARTIKEL",
+    pillar: "news",
+    title: "BERITA",
     code: "04",
     label: "WARTA // INFORMASI TERKINI",
     meta: "KABAR & PUBLIKASI HIMATIF",
@@ -55,8 +55,8 @@ const pageTransitionThemes = {
   "berita-detail.html": {
     base: "#38290f",
     accent: "#f0be54",
-    pillar: "composite",
-    badge: "KABAR TERKINI // DOKUMENTASI",
+    pillar: "news",
+    title: "BERITA",
     code: "04",
     label: "PUBLIKASI // HIMATIF PRESS",
     meta: "ARSIP & DOKUMENTASI KEGIATAN",
@@ -64,8 +64,8 @@ const pageTransitionThemes = {
   "kegiatan.html": {
     base: "#48211a",
     accent: "#f3906c",
-    pillar: "doric",
-    badge: "KEGIATAN // ARSIP & AGENDA",
+    pillar: "events",
+    title: "KEGIATAN",
     code: "05",
     label: "AGENDA // JEJAK LANGKAH",
     meta: "MOMEN & DOKUMENTASI ACARA",
@@ -85,6 +85,7 @@ pageTransition.setAttribute("aria-hidden", "true");
 pageTransition.innerHTML = `
   <div class="page-transition__panel page-transition__panel--left">
     <div class="page-transition__pillar"></div>
+    <div class="page-transition__title page-transition__title--left" data-transition-title></div>
     <div class="page-transition__data page-transition__data--left">
       <span class="page-transition__index" data-transition-code>01</span>
       <span class="page-transition__code-line"></span>
@@ -94,6 +95,7 @@ pageTransition.innerHTML = `
   </div>
   <div class="page-transition__panel page-transition__panel--right">
     <div class="page-transition__pillar"></div>
+    <div class="page-transition__title page-transition__title--right" data-transition-title></div>
     <div class="page-transition__data page-transition__data--right">
       <span class="page-transition__code-text" data-transition-meta>HIMATIF SAMANVAYA</span>
       <span class="page-transition__code-line"></span>
@@ -105,7 +107,7 @@ pageTransition.innerHTML = `
     <div class="page-transition__glow"></div>
     <div class="page-transition__pill">
       <span class="page-transition__pill-dot">✦</span>
-      <span class="page-transition__pill-text" data-transition-badge>BERANDA // RUANG TUMBUH</span>
+      <span class="page-transition__pill-text">HIMATIF SAMANVAYA SATYA</span>
       <span class="page-transition__pill-dot">✦</span>
     </div>
     <div class="page-transition__crest">
@@ -129,13 +131,41 @@ pageTransition.innerHTML = `
       </div>
       <img class="page-transition__logo" src="${logoPath}" alt="HIMATIF Samanvaya" />
     </div>
-    <div class="page-transition__telemetry">
-      <span class="telemetry-bar"></span>
-      <span class="telemetry-txt">HIMATIF SAMANVAYA SATYA</span>
-      <span class="telemetry-bar"></span>
-    </div>
   </div>
 `;
+
+const transitionTitleMeasureContext = document
+  .createElement("canvas")
+  .getContext("2d");
+
+const fitTransitionTitle = () => {
+  const title = pageTransition.querySelector(
+    ".page-transition__title--left",
+  );
+  if (!title || !transitionTitleMeasureContext) return;
+
+  const style = window.getComputedStyle(title);
+  const fontSize = 100;
+  transitionTitleMeasureContext.font = `${style.fontWeight} ${fontSize}px ${style.fontFamily}`;
+
+  const text = title.textContent || "";
+  const currentFontSize = Number.parseFloat(style.fontSize) || fontSize;
+  const letterSpacing =
+    ((Number.parseFloat(style.letterSpacing) || 0) / currentFontSize) *
+    fontSize;
+  const textWidth =
+    transitionTitleMeasureContext.measureText(text).width +
+    Math.max(0, text.length - 1) * letterSpacing;
+  const fittedSize = Math.min(
+    420,
+    (document.documentElement.clientWidth * 0.88 * fontSize) / textWidth,
+  );
+
+  pageTransition.style.setProperty(
+    "--transition-title-size",
+    `${Math.max(32, fittedSize)}px`,
+  );
+};
 
 const applyPageTransitionTheme = (pagePath) => {
   const page = pagePath.split(/[\\/]/).pop() || "index.html";
@@ -150,16 +180,28 @@ const applyPageTransitionTheme = (pagePath) => {
   pageTransition.style.setProperty("--transition-accent", theme.accent);
   pageTransition.dataset.pillar = theme.pillar;
 
-  const badgeEl = pageTransition.querySelector("[data-transition-badge]");
+  pageTransition.querySelectorAll("[data-transition-title]").forEach((title) => {
+    title.replaceChildren(
+      ...Array.from(theme.title, (letter) => {
+        const character = document.createElement("span");
+        character.textContent = letter;
+        return character;
+      }),
+    );
+  });
   const codeEl = pageTransition.querySelector("[data-transition-code]");
   const labelEl = pageTransition.querySelector("[data-transition-label]");
   const metaEl = pageTransition.querySelector("[data-transition-meta]");
 
-  if (badgeEl) badgeEl.textContent = theme.badge;
   if (codeEl) codeEl.textContent = theme.code;
   if (labelEl) labelEl.textContent = theme.label;
   if (metaEl) metaEl.textContent = theme.meta;
+  fitTransitionTitle();
 };
+
+applyPageTransitionTheme(window.location.pathname);
+window.addEventListener("resize", fitTransitionTitle, { passive: true });
+document.fonts?.ready.then(fitTransitionTitle);
 
 const cleanupTransition = () => {
   pageTransition.classList.remove("is-entering");
@@ -173,7 +215,7 @@ if (!prefersReducedMotion.matches) {
   document.body.append(pageTransition);
   document.body.classList.add("is-page-entering");
 
-  const enterTimeout = window.setTimeout(cleanupTransition, 620);
+  const enterTimeout = window.setTimeout(cleanupTransition, 980);
   pageTransition.addEventListener(
     "animationend",
     (event) => {
@@ -200,11 +242,9 @@ const isSamePageNavigation = (destination) => {
     window.location.pathname.split(/[\\/]/).filter(Boolean).pop() ||
     "index.html";
   const destFile =
-    destination.pathname.split(/[\\/]/).filter(Boolean).pop() ||
-    "index.html";
+    destination.pathname.split(/[\\/]/).filter(Boolean).pop() || "index.html";
 
-  const isSameFile =
-    currentFile.toLowerCase() === destFile.toLowerCase();
+  const isSameFile = currentFile.toLowerCase() === destFile.toLowerCase();
 
   const currentIsInPages =
     window.location.pathname.includes("/pages/") ||
@@ -263,14 +303,19 @@ document.addEventListener("click", (event) => {
   document.body.classList.add("is-page-leaving");
   document.body.append(pageTransition);
 
-  window.setTimeout(() => {
-    window.location.assign(destination.href);
-  }, 520);
+  pageTransition.addEventListener("animationend", (event) => {
+    if (
+      event.animationName === "curtain-panel-close-left" ||
+      event.animationName === "curtain-panel-close-right"
+    ) {
+      window.location.assign(destination.href);
+    }
+  });
 });
 
 window.addEventListener("pageshow", (event) => {
   pageNavigationStarted = false;
-  cleanupTransition();
+  if (event.persisted) cleanupTransition();
 });
 
 window.addEventListener(
