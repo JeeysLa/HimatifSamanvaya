@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 520">
+  <g transform="rotate(-12 320 260)">
+    <rect x="118" y="34" width="424" height="438" fill="#cfd2d1"/>
+    <path d="M142 78h374M142 90h300M142 102h330" fill="none" stroke="#596064" stroke-opacity=".46" stroke-width="2"/>
+    <path d="M142 132h218v100H142z" fill="#aeb4b4" fill-opacity=".72"/>
+    <path d="M378 132h138M378 144h138M378 156h138M378 168h120M378 180h138M378 192h128M378 204h138M378 216h115" fill="none" stroke="#50575b" stroke-opacity=".48" stroke-width="3"/>
+    <path d="M142 254h374M142 266h374M142 278h374M142 290h356M142 302h374M142 314h360M142 326h374M142 338h346M142 350h374M142 362h356M142 374h374M142 386h360M142 398h374M142 410h340M142 422h374" fill="none" stroke="#596064" stroke-opacity=".4" stroke-width="3"/>
+    <text x="142" y="64" fill="#3c4448" fill-opacity=".65" font-family="Georgia,serif" font-size="17" font-weight="700" letter-spacing="2">HIMATIF  /  WARTA KAMPUS</text>
+    <text x="145" y="216" fill="#343a3d" fill-opacity=".7" font-family="Georgia,serif" font-size="54" font-weight="700">KABAR</text>
+  </g>
+  <g transform="rotate(9 320 260)">
+    <rect x="86" y="46" width="430" height="420" fill="#e1e3e0"/>
+    <path d="M108 88h384M108 101h250" fill="none" stroke="#62696d" stroke-opacity=".42" stroke-width="2"/>
+    <text x="108" y="75" fill="#41494d" fill-opacity=".58" font-family="Georgia,serif" font-size="16" font-weight="700" letter-spacing="2">EDISI 04  /  INFORMASI</text>
+    <path d="M108 132h160v108H108z" fill="#c3c8c7"/>
+    <path d="M282 132h208M282 144h208M282 156h198M282 168h208M282 180h190M282 192h208M282 204h204M282 216h188M108 258h382M108 270h382M108 282h370M108 294h382M108 306h360M108 318h382M108 330h375M108 342h382M108 354h350M108 366h382M108 378h372M108 390h382M108 402h360M108 414h382" fill="none" stroke="#62696d" stroke-opacity=".38" stroke-width="3"/>
+  </g>
+  <g transform="rotate(-3 320 260)">
+    <rect x="46" y="78" width="474" height="350" fill="#f5f4ee"/>
+    <path d="M66 123h434" fill="none" stroke="#454c50" stroke-opacity=".7" stroke-width="2"/>
+    <text x="68" y="108" fill="#32393d" fill-opacity=".78" font-family="Georgia,serif" font-size="17" font-weight="700" letter-spacing="2">WARTA  /  HIMATIF</text>
+    <text x="475" y="108" fill="#4a5256" fill-opacity=".65" font-family="Georgia,serif" font-size="11" text-anchor="end">KARAWANG</text>
+    <text x="68" y="173" fill="#30373b" fill-opacity=".78" font-family="Georgia,serif" font-size="42" font-weight="700">KABAR</text>
+    <text x="70" y="195" fill="#4b5357" fill-opacity=".66" font-family="Georgia,serif" font-size="12" letter-spacing="2">KEGIATAN &amp; PENGUMUMAN</text>
+    <path d="M70 213h430M70 225h130M210 225h130M350 225h150M70 238h130M210 238h130M350 238h150M70 251h130M210 251h130M350 251h150M70 264h130M210 264h130M350 264h150M70 277h130M210 277h130M350 277h150M70 290h130M210 290h130M350 290h150M70 303h130M210 303h130M350 303h150M70 316h130M210 316h130M350 316h150M70 329h130M210 329h130M350 329h150M70 342h130M210 342h130M350 342h150M70 355h130M210 355h130M350 355h150M70 368h130M210 368h130M350 368h150M70 381h130M210 381h130M350 381h150" fill="none" stroke="#555d61" stroke-opacity=".46" stroke-width="2"/>
+  </g>
+</svg>

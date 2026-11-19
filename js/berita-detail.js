@@ -1,4 +1,16 @@
 const newsData = {
+  'seminar-ai-native': {
+    category: 'Pengumuman',
+    status: 'Akan datang',
+    title: 'Seminar Nasional: AI Native Generation',
+    summary: 'Mempersiapkan generasi mahasiswa menghadapi masa depan teknologi cerdas.',
+    body: [
+      'Seminar Nasional AI Native Generation akan diselenggarakan pada 4 Desember 2026, pukul 07.00–11.30 WIB, di Aula 1 Gedung Rektorat Universitas Buana Perjuangan Karawang.',
+      'Acara menghadirkan Eko Kurniawan Khannedy, Technical Architect di Blibli.com, dan Dr. Ir. Achmad Solichin, S.Kom., M.T.I., Dekan Fakultas Teknologi Informasi Universitas Budi Luhur.',
+      'Pindai kode QR pada poster untuk melakukan pendaftaran.'
+    ],
+    poster: '../assets/images/SeminarNasionalAINative2026.png'
+  },
   rekrutmen: {
     category: 'Pengumuman',
     status: 'Soon',
@@ -31,4 +43,11 @@ document.querySelector('[data-detail-status]').textContent = detail.status;
 document.querySelector('[data-detail-body]').innerHTML = detail.body
   .map((paragraph) => `<p>${paragraph}</p>`)
   .join('');
+const poster = document.querySelector('[data-detail-poster]');
+if (detail.poster) {
+  const posterImage = document.querySelector('[data-detail-poster-image]');
+  posterImage.src = detail.poster;
+  posterImage.alt = `Poster ${detail.title}`;
+  poster.hidden = false;
+}
 document.title = `${detail.title} | HIMATIF Samanvaya`;

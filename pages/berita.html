@@ -16,7 +16,7 @@
     <script src="../js/berita.js" defer></script>
 </head>
 
-<body>
+<body class="news-page">
     <header class="site-header" data-header>
         <div class="container nav-wrap"><a class="brand" href="../index.html"><span class="brand-mark"
                     aria-label="Logo Samanvaya"><img src="../assets/logo/logo-samanvaya.webp"
@@ -31,34 +31,61 @@
     </header>
     <main>
         <section class="inner-hero inner-hero-news section-dark">
-            <div class="container">
-                <p class="eyebrow reveal">Catatan dari Samanvaya</p>
-                <h1 class="reveal reveal-delay">Kabar<br><em>terbaru.</em></h1>
-                <p class="inner-lead reveal reveal-delay-2">Cerita, pengumuman, dan jejak kolaborasi yang sedang kami bangun.</p>
+            <div class="news-hero-paper" aria-hidden="true">
+                <div class="news-paper-back"></div>
+                <div class="news-paper-page">
+                    <div class="news-paper-masthead"><strong>HIMATIF</strong><span>WARTA KAMPUS · KARAWANG</span></div>
+                    <p class="news-paper-section">KABAR & PENGUMUMAN</p>
+                    <p class="news-paper-title">INFORMASI<br>DAN<br>BERITA</p>
+                    <div class="news-paper-rule"></div>
+                    <div class="news-paper-columns"><span></span><span></span><span></span></div>
+                    <span class="news-paper-seal">UBP</span>
+                </div>
+            </div>
+            <div class="container news-hero-layout">
+                <div class="news-hero-copy">
+                    <p class="eyebrow reveal">Himpunan Mahasiswa Teknik Informatika</p>
+                    <h1 class="reveal reveal-delay">BERITA<br><em>HIMATIF</em></h1>
+                    <p class="inner-lead reveal reveal-delay-2">Temukan berbagai informasi terbaru resmi mengenain kegiatan dari organisasi HIMATIF</p>
+                </div>
             </div>
         </section>
-        <section class="section-light section-space">
+        <section class="section-light section-space berita-announcements">
             <div class="container">
                 <div class="directory-toolbar">
                     <div>
                         <p class="section-label reveal">Pengumuman HIMATIF</p>
                         <h2 class="reveal reveal-delay">Segera hadir</h2>
                     </div>
+                    <p class="upcoming-count reveal reveal-delay-2"><span>03</span> agenda mendatang</p>
                 </div>
                 <div class="article-list">
+                    <article class="article-row article-featured reveal reveal-delay" data-category="pengumuman">
+                        <img class="article-poster" src="../assets/images/SeminarNasionalAINative2026.png"
+                            alt="Poster Seminar Nasional AI Native Generation, 4 Desember 2026">
+                        <div>
+                            <p class="article-category"><span class="article-number">01</span> Pengumuman <span class="article-status">4 Des 2026</span></p>
+                            <h2>Seminar Nasional: AI Native Generation</h2>
+                            <p class="article-summary">Mempersiapkan generasi mahasiswa menghadapi masa depan teknologi cerdas. Acara berlangsung pada 4 Desember 2026 di Universitas Buana Perjuangan Karawang.</p>
+                            <a class="button button-dark article-read" href="berita-detail.html?berita=seminar-ai-native">Info selengkapnya <span>→</span></a>
+                        </div>
+                    </article>
                     <article class="article-row reveal reveal-delay" data-category="pengumuman">
                         <div class="image-placeholder article article-image-rekrutmen"><span>OPEN<br>RECRUITMENT</span></div>
                         <div>
-                            <p class="article-category">Pengumuman <span class="article-status">Soon</span></p>
+                            <p class="article-category"><span class="article-number">02</span> Pengumuman <span class="article-status">Soon</span></p>
                             <h2>Open Recruitment & Minat Bakat HIMATIF Muda 2027</h2>
                             <p class="article-summary">Kesempatan untuk bergabung di Next Generation HIMATIF direncanakan hadir di akhir Oktober. Informasi pendaftaran menyusul.</p>
                             <a class="button button-dark article-read" href="berita-detail.html?berita=rekrutmen">Info selengkapnya <span>→</span></a>
                         </div>
                     </article>
                     <article class="article-row reveal reveal-delay-2" data-category="pengumuman">
-                        <div class="image-placeholder article article-image-pdh"><span>PDH<br>BATCH 2</span></div>
+                        <div class="image-placeholder article article-image-pdh">
+                            <img class="pdh-logo" src="../assets/logo/logo-samanvaya.webp" alt="Logo Samanvaya">
+                            <span>PDH<br>BATCH 2</span>
+                        </div>
                         <div>
-                            <p class="article-category">Pengumuman <span class="article-status">Soon</span></p>
+                            <p class="article-category"><span class="article-number">03</span> Pengumuman <span class="article-status">Soon</span></p>
                             <h2>PDH Batch 2</h2>
                             <p class="article-summary">Detail produk dan pemesanan segera diumumkan.</p>
                             <a class="button button-dark article-read" href="berita-detail.html?berita=pdh-batch-2">Info selengkapnya <span>→</span></a>

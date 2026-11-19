@@ -44,8 +44,8 @@ const pageTransitionThemes = {
     meta: "STRUKTUR & PERAN PENGURUS",
   },
   "berita.html": {
-    base: "#38290f",
-    accent: "#f0be54",
+    base: "#38291f",
+    accent: "#e4d3b8",
     pillar: "news",
     title: "BERITA",
     code: "04",
@@ -53,8 +53,8 @@ const pageTransitionThemes = {
     meta: "KABAR & PUBLIKASI HIMATIF",
   },
   "berita-detail.html": {
-    base: "#38290f",
-    accent: "#f0be54",
+    base: "#38291f",
+    accent: "#e4d3b8",
     pillar: "news",
     title: "BERITA",
     code: "04",
@@ -204,6 +204,8 @@ window.addEventListener("resize", fitTransitionTitle, { passive: true });
 document.fonts?.ready.then(fitTransitionTitle);
 
 const cleanupTransition = () => {
+  window.clearTimeout(enterTimeout);
+  enterTimeout = undefined;
   pageTransition.classList.remove("is-entering");
   pageTransition.classList.remove("is-leaving");
   pageTransition.remove();
@@ -211,14 +213,22 @@ const cleanupTransition = () => {
   document.body.classList.remove("is-page-leaving");
 };
 
+let enterTimeout;
+
 if (!prefersReducedMotion.matches) {
   document.body.append(pageTransition);
   document.body.classList.add("is-page-entering");
 
-  const enterTimeout = window.setTimeout(cleanupTransition, 980);
+  enterTimeout = window.setTimeout(cleanupTransition, 780);
   pageTransition.addEventListener(
     "animationend",
     (event) => {
+      if (
+        !(event.target instanceof Element) ||
+        !event.target.matches(".page-transition__panel")
+      )
+        return;
+
       if (
         event.animationName === "curtain-panel-open-left" ||
         event.animationName === "curtain-panel-open-right"
@@ -227,7 +237,6 @@ if (!prefersReducedMotion.matches) {
         cleanupTransition();
       }
     },
-    { once: true },
   );
 } else {
   cleanupTransition();
@@ -297,18 +306,35 @@ document.addEventListener("click", (event) => {
   event.preventDefault();
   if (pageNavigationStarted) return;
   pageNavigationStarted = true;
+  window.clearTimeout(enterTimeout);
+  enterTimeout = undefined;
 
   pageTransition.classList.remove("is-entering");
   pageTransition.classList.add("is-leaving");
   document.body.classList.add("is-page-leaving");
   document.body.append(pageTransition);
 
+  let navigationCommitted = false;
+  const navigationFallback = window.setTimeout(navigateToDestination, 900);
+  function navigateToDestination() {
+    if (navigationCommitted) return;
+    navigationCommitted = true;
+    window.clearTimeout(navigationFallback);
+    window.location.assign(destination.href);
+  }
+
   pageTransition.addEventListener("animationend", (event) => {
+    if (
+      !(event.target instanceof Element) ||
+      !event.target.matches(".page-transition__panel")
+    )
+      return;
+
     if (
       event.animationName === "curtain-panel-close-left" ||
       event.animationName === "curtain-panel-close-right"
     ) {
-      window.location.assign(destination.href);
+      navigateToDestination();
     }
   });
 });
