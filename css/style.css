@@ -1595,6 +1595,97 @@ body.is-page-leaving main {
   font-size: clamp(54px, 6.4vw, 82px);
 }
 
+.news-hero-copy h1.reveal {
+  opacity: 1;
+  transform: none;
+  transition: none;
+}
+
+.news-headline-line {
+  display: block;
+  width: fit-content;
+  white-space: nowrap;
+}
+
+.news-headline-char {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(0.12em) scale(0.96);
+  filter: blur(2px);
+}
+
+.news-headline-char:nth-child(1) {
+  --news-char-delay: 0ms;
+}
+
+.news-headline-char:nth-child(2) {
+  --news-char-delay: 100ms;
+}
+
+.news-headline-char:nth-child(3) {
+  --news-char-delay: 200ms;
+}
+
+.news-headline-char:nth-child(4) {
+  --news-char-delay: 300ms;
+}
+
+.news-headline-char:nth-child(5) {
+  --news-char-delay: 400ms;
+}
+
+.news-headline-char:nth-child(6) {
+  --news-char-delay: 500ms;
+}
+
+.news-headline-char:nth-child(7) {
+  --news-char-delay: 600ms;
+}
+
+.news-hero-copy h1.visible .news-headline-char {
+  animation: news-headline-type 140ms ease-out both;
+  animation-delay: var(--news-char-delay);
+}
+
+.news-hero-copy h1.visible .news-headline-line:nth-child(2) .news-headline-char {
+  animation-delay: calc(var(--news-char-delay) + 650ms);
+}
+
+.news-headline-line:nth-child(2)::after {
+  display: inline-block;
+  width: 0.055em;
+  height: 0.72em;
+  margin-left: 0.12em;
+  background: #e4d3b8;
+  content: "";
+  opacity: 0;
+  vertical-align: 0.04em;
+}
+
+.news-hero-copy h1.visible .news-headline-line:nth-child(2)::after {
+  animation: news-headline-caret 1s steps(1, end) 1.45s infinite;
+}
+
+@keyframes news-headline-type {
+  to {
+    opacity: 1;
+    transform: none;
+    filter: blur(0);
+  }
+}
+
+@keyframes news-headline-caret {
+  0%,
+  49% {
+    opacity: 1;
+  }
+
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
 .news-hero-copy .inner-lead {
   max-width: 390px;
   margin-top: 24px;
@@ -5390,6 +5481,18 @@ main:has(> .news)>.closing {
     opacity: 1;
     transform: none;
     transition: none;
+  }
+
+  .news-headline-char {
+    animation: none !important;
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+
+  .news-headline-line:nth-child(2)::after {
+    animation: none !important;
+    opacity: 0;
   }
 
   .main-nav a:not(.nav-cta),
